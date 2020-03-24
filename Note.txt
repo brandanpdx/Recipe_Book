@@ -30,3 +30,15 @@ add a recipe
 add tags to recipes
  -- update delete tags
 
+<div class="col-md-8 offset-md-2">
+  @foreach (Restaurant restaurant in Model)
+  {
+    <li>@Html.ActionLink($"{restaurant.Name}", "Details", new { id = restaurant.RestaurantId }) : @restaurant.Location
+      @for (var i=0; i < restaurant.Rating; i++)
+      {
+       <span class="fa fa-star"></span>
+      }
+    </li>    
+    <hr>
+  }
+</div>
