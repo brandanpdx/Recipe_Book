@@ -1,9 +1,10 @@
-@{ 
+@{
   Layout = "_Layout";
 }
+
 <h1>Edit</h1>
-@* 
-@model RecipeBook.Models.Recipe
+
+@* @model ToDoList.Models.Item
 
 <h2>Edit</h2>
 
@@ -11,7 +12,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.RecipeId)
+    @Html.HiddenFor(model => model.ItemId)
 
     @Html.LabelFor(model => model.Description)
     @Html.EditorFor(model => model.Description)

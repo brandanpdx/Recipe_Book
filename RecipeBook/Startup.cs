@@ -29,9 +29,9 @@ namespace RecipeBook
         .AddDbContext<RecipeBookContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
-      // services.AddIdentity<ApplicationUser, IdentityRole>()
-      //           .AddEntityFrameworkStores<RecipeContext>()
-      //           .AddDefaultTokenProviders();
+      services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<RecipeBookContext>()
+                .AddDefaultTokenProviders();
 
       services.Configure<IdentityOptions>(options =>
         {

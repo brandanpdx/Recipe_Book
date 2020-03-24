@@ -24,7 +24,7 @@ namespace RecipeBook.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.Tags = new SpectList(_db.Tags, "TagId", "Name");
+      ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Name");
       return View();
     }
 
@@ -39,7 +39,7 @@ namespace RecipeBook.Controllers
     public ActionResult Details(int id)
     {
 
-      Recipe thisRecipe = _db.Recipes
+      var thisRecipe = _db.Recipes
         .Include(recipe => recipe.Tags)
         .ThenInclude(join => join.Tag)
         .FirstOrDefault(recipe => recipe.RecipeId == id);

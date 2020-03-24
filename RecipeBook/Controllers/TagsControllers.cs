@@ -28,7 +28,7 @@ namespace RecipeBook.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(TagsController tag, int RecipeId)
+    public ActionResult Create(Tag tag, int RecipeId)
     {
       _db.Tags.Add(tag);
       if (RecipeId != 0)
@@ -42,7 +42,7 @@ namespace RecipeBook.Controllers
     public ActionResult Details(int id)
     {
       Tag thisTag = _db.Tags
-          .Include(tag => student.Recipes)
+          .Include(tag => tag.Recipes)
           .ThenInclude(join => join.Recipe)
           .FirstOrDefault(tag => tag.TagId == id);
       return View(thisTag);

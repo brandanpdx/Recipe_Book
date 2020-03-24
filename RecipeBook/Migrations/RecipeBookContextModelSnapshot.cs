@@ -4,79 +4,79 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecipeBook.Models;
 
-namespace Recipe.Migrations
+namespace RecipeBook.Migrations
 {
-    [DbContext(typeof(RecipeBookContext))]
-    partial class RecipeBookContextModelSnapshot : ModelSnapshot
+  [DbContext(typeof(RecipeBookContext))]
+  partial class RecipeBookContextModelSnapshot : ModelSnapshot
+  {
+    protected override void BuildModel(ModelBuilder modelBuilder)
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+      modelBuilder
+          .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+          .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("RecipeBook.Models.Recipe", b =>
-                {
-                    b.Property<int>("RecipeId")
-                        .ValueGeneratedOnAdd();
+      modelBuilder.Entity("RecipeBook.Models.Recipe", b =>
+          {
+            b.Property<int>("RecipeId")
+                      .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Ingredients");
+            b.Property<string>("Ingredients");
 
-                    b.Property<string>("Instructions");
+            b.Property<string>("Instructions");
 
-                    b.Property<string>("Name");
+            b.Property<string>("Name");
 
-                    b.Property<int>("Rating");
+            b.Property<int>("Rating");
 
-                    b.HasKey("RecipeId");
+            b.HasKey("RecipeId");
 
-                    b.ToTable("Recipes");
-                });
+            b.ToTable("Recipes");
+          });
 
-            modelBuilder.Entity("RecipeBook.Models.RecipeTag", b =>
-                {
-                    b.Property<int>("RecipeTagId")
-                        .ValueGeneratedOnAdd();
+      modelBuilder.Entity("RecipeBook.Models.RecipeTag", b =>
+          {
+            b.Property<int>("RecipeTagId")
+                      .ValueGeneratedOnAdd();
 
-                    b.Property<int>("RecipeId");
+            b.Property<int>("RecipeId");
 
-                    b.Property<int>("TagId");
+            b.Property<int>("TagId");
 
-                    b.HasKey("RecipeTagId");
+            b.HasKey("RecipeTagId");
 
-                    b.HasIndex("RecipeId");
+            b.HasIndex("RecipeId");
 
-                    b.HasIndex("TagId");
+            b.HasIndex("TagId");
 
-                    b.ToTable("RecipeTag");
-                });
+            b.ToTable("RecipeTag");
+          });
 
-            modelBuilder.Entity("RecipeBook.Models.Tag", b =>
-                {
-                    b.Property<int>("TagId")
-                        .ValueGeneratedOnAdd();
+      modelBuilder.Entity("RecipeBook.Models.Tag", b =>
+          {
+            b.Property<int>("TagId")
+                      .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+            b.Property<string>("Name");
 
-                    b.HasKey("TagId");
+            b.HasKey("TagId");
 
-                    b.ToTable("Tags");
-                });
+            b.ToTable("Tags");
+          });
 
-            modelBuilder.Entity("RecipeBook.Models.RecipeTag", b =>
-                {
-                    b.HasOne("RecipeBook.Models.Recipe", "Recipe")
-                        .WithMany("Tags")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+      modelBuilder.Entity("RecipeBook.Models.RecipeTag", b =>
+          {
+            b.HasOne("RecipeBook.Models.Recipe", "Recipe")
+                      .WithMany("Tags")
+                      .HasForeignKey("RecipeId")
+                      .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("RecipeBook.Models.Tag", "Tag")
-                        .WithMany("Recipes")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
+            b.HasOne("RecipeBook.Models.Tag", "Tag")
+                      .WithMany("Recipes")
+                      .HasForeignKey("TagId")
+                      .OnDelete(DeleteBehavior.Cascade);
+          });
 #pragma warning restore 612, 618
-        }
     }
+  }
 }
