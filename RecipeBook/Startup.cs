@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Recipe.Models;
+using RecipeBook.Models;
 
-namespace Recipe
+namespace RecipeBook
 {
   public class Startup
   {

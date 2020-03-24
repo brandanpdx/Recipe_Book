@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Recipe
+namespace RecipeBook
 {
   public class Program
   {
