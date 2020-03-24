@@ -1,0 +1,14 @@
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-warning">
+        @Html.ActionLink("Back to list", "Index")
+      </label>
+      <label class="btn btn-warning">
+        @Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })
+      </label>
+      <label class="btn btn-warning">
+        @Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })
+      </label>
+      <label class="btn btn-warning">
+        @Html.ActionLink("Add a Recipe", "AddRecipe", new { id = Model.RecipeId })
+      </label>
+    </div>

@@ -2,36 +2,34 @@
    Layout = "_Layout";
  }
 
- <h1>Details</h1>
- 
- 
-  @* Layout = "_Layout";
-}
+@model RecipeBook.Models.Recipe;
 
-@model RecipeBook.Models.Item
-Recipe<h2>Item Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
 
-@if(@Model.Categories.Count == 0)
-{
-  <p>This item does not belong to any categories</p>
-}
-Recipeelse
-{
-  <h4>Categories the item belongs to:</h4>
-  <ul>
-  @foreach(var join in Model.Categories)
-  {
-    <li>@join.Category.Name</li>
-    @using (Html.BeginForm("DeleteCategory", "Items"))
+    <h1 class="text-center">Recipe Details</h1>
+    <hr />
+    <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+    @if(@Model.Tags.Count == 0)
     {
-      @Html.Hidden("joinId", @join.CategoryItemId)
-   <input type="submit" value="Delete"/>
-</ul>
-}
+      <p>This Recipe does not belong to any Tags</p>
+    }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.ItemId })</p>
-<p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })</p>
-<p>@Html.ActionLink("Add a Category", "AddCategory", new { id = Model.ItemId })</p>  *@
+      <h4>Recipe the Recipe belongs to:</h4>
+      <ul>
+      @foreach(var join in Model.Tags)
+      {
+        <li>@join.Recipe.Name</li>
+        @using (Html.BeginForm("DeleteRecipe", "Recipes"))
+        {
+          @Html.Hidden("joinId", @join.RecipeId)
+          <input type="submit" value="Delete"/>
+        }
+      }
+      </ul>
+
+      @await Html.PartialAsync("_Recipe-buttons")
+
+  </div>
+</div>

@@ -3,7 +3,7 @@
 }
 
 <h1>Delete</h1>
-@* @model RecipeBook.Models.Item
+@model RecipeBook.Models.Item
 
 <h2>Are you sure you want to delete this Item?</h2>
 
@@ -12,4 +12,4 @@
 {
     <input type="submit" value="Delete" />
 }
-@Html.ActionLink("Back to List", "Index") *@
+@await Html.PartialAsync("_Recipe-buttons")

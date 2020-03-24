@@ -60,9 +60,7 @@ namespace RecipeBook.Controllers
         .Include(recipe => recipe.Tags)
         .ThenInclude(join => join.Tag)
         .FirstOrDefault(recipe => recipe.RecipeId == id);
-
       return View(thisRecipe);
-      // return View();
     }
 
     public ActionResult Edit(int id)

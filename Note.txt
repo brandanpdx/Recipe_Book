@@ -30,7 +30,3 @@ add a recipe
 add tags to recipes
  -- update delete tags
 
-https://www.learnhowtoprogram.com/c-and-net/advanced-databases-and-authentication/integrating-entity-and-identity
-
-
-https://www.learnhowtoprogram.com/c-and-net/advanced-databases-and-authentication/identity-user-logins-cc8f3d23-2b5d-4838-93c0-e508fb19eab2
