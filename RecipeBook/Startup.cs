@@ -26,12 +26,12 @@ namespace RecipeBook
       services.AddMvc();
 
       services.AddEntityFrameworkMySql()
-        .AddDbContext<RecipeContext>(options => options
+        .AddDbContext<RecipeBookContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
-      services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<RecipeContext>()
-                .AddDefaultTokenProviders();
+      // services.AddIdentity<ApplicationUser, IdentityRole>()
+      //           .AddEntityFrameworkStores<RecipeContext>()
+      //           .AddDefaultTokenProviders();
 
       services.Configure<IdentityOptions>(options =>
         {
