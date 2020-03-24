@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace RecipeBook.Models
 {
-  public class RecipeBookContext : DbContext
+  public class RecipeBookContext : IdentityDbContext<ApplicationUser>
   {
     public virtual DbSet<Recipe> Recipes { get; set; }
     public DbSet<Tag> Tags { get; set; }

@@ -1,19 +1,18 @@
 @{
   Layout = "_Layout";
 }
-<h1>Create</h1>
-@* @model RecipeBookdelelRecipeBook.ModTagsItem
+@model RecipeBook.Models.Recipe;
 
-<h4>Add a new task</h4>
+<h4>Add a new Recipe</h4>
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.Description)
-    @Html.TextBoxFor(model => model.Description)
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
 
-    @Html.Label("Select category")
-    @Html.DropDownList("CategoryId")
+    @Html.Label("Select Tag")
+    @Html.DropDownList("TagId")
 
     <input type="submit" value="Add new item" class="btn btn-default" />
 }
-<p>@Html.ActionLink("Show all items", "Index")</p> *@
+<p>@Html.ActionLink("Show all items", "Index")</p>

@@ -5,15 +5,14 @@
 @using RecipeBook.Models;
 @model IEnumerable<RecipeBook.Models.Recipe>
 
-<h1>Recipes Index</h1>
-@* <h1>Recipes for @User.Identity.Name</h1>
+<h1>Recipes for @User.Identity.Name</h1>
 
 @if (Model.Any())
 {
   <ul>
     @foreach (Recipe recipe in Model)
     {
-      <li>@Html.ActionLink($"{recipe.Description}", "Details", new { id = recipe.RecipeId })</li>
+      <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
     }
   </ul>
 } 
@@ -24,4 +23,4 @@ else
 
 <p>@Html.ActionLink("Add new Recipe", "Create")</p>
 
-<p>@Html.ActionLink("Home", "Index", "Home")</p> *@
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

@@ -14,6 +14,7 @@ namespace RecipeBook.Models
     public int Rating { get; set; }
     public string Instructions { get; set; }
     public string Ingredients { get; set; }
+    public virtual ApplicationUser User { get; set; }
     public virtual ICollection<RecipeTag> Tags { get; set; }
   }
 }

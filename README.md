@@ -2,7 +2,7 @@
 
 #### _Epicodus 2020 C#/React Cohort Recipie Book Practice Project._
 
-#### By _** Dusty Mccord , Brandan Sayarath, Dom Youmans, James T. | 23 March 2020**_
+#### By _** Dusty Mccord , Brandan Sayarath, Dom Youmans, James T. | 24 March 2020**_
 
 ## Description
 
