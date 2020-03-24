@@ -1,0 +1,31 @@
+rsync -av --include='*/' --exclude='*' /path/to/src /path/to/dest/
+
+1. Recipe
+    int = id
+    string = Name
+    int = rating
+    string = instructions
+    string = Ingredients
+
+
+2. tags
+   id
+   name
+
+4. join = RecipeTag
+    id 
+    RecipeId
+    TagId
+
+
+
+
+--
+add a recipe
+   with ingredients and instructions
+   rating
+  -- edit 
+  -- delete
+
+add tags to recipes
+ -- update delete tags
