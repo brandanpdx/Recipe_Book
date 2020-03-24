@@ -5,22 +5,29 @@
 @using RecipeBook.Models;
 @model IEnumerable<RecipeBook.Models.Recipe>;
 
-<h1>Recipes for @User.Identity.Name</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
 
-@if (Model.Any())
-{
-  <ul>
-    @foreach (Recipe recipe in Model)
+    <h1 class="text-center">Recipes for @User.Identity.Name</h1>
+
+    @if (Model.Any())
     {
-      <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
+      <div class="list-group" id="list-tab" role="tablist">
+        @foreach (Recipe recipe in Model)
+        {
+          <div class="list-group-item list-group-item-action">
+          @Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })
+          </div>
+        }
+      </div>
+    } 
+    else
+    { 
+      <h3>No Recipes have been added yet!</h3>
     }
-  </ul>
-} 
-else
-{
-  <h3>No Recipes have been added yet!</h3>
-}
 
-<p>@Html.ActionLink("Add new Recipe", "Create")</p>
+    <p>@Html.ActionLink("Add new Recipe", "Create", null, null, new {@class="btn btn-info"})
 
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+    @Html.ActionLink("Home", "Index", "Home", null, new {@class="btn btn-success"})</p>
+  </div>
+</div>

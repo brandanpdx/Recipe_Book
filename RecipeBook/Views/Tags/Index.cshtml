@@ -5,22 +5,28 @@
 @using RecipeBook.Models;
 @model IEnumerable<RecipeBook.Models.Tag>;
 
-<h1>Tags for @User.Identity.Name</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
 
-@if (Model.Any())
-{
-  <ul>
-    @foreach (Tag tag in Model)
+    <h1 class="text-center">Tags for @User.Identity.Name</h1>
+
+    @if (Model.Any())
     {
-      <li>@Html.ActionLink($"{tag.Name}", "Details", new { id = tag.TagId })</li>
+      <div class="list-group" id="list-tab" role="tablist">
+        @foreach (Tag tag in Model)
+        {
+          <div class="list-group-item list-group-item-action">
+            @Html.ActionLink($"{tag.Name}", "Details", new { id = tag.TagId })
+          </div>
+        }
+      </div>
+    } 
+    else
+    {
+      <h3>No Tags have been added yet!</h3>
     }
-  </ul>
-} 
-else
-{
-  <h3>No Tags have been added yet!</h3>
-}
 
-<p>@Html.ActionLink("Add new Tag", "Create")</p>
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+    <p>@Html.ActionLink("Add new Tag", "Create", null, null, new {@class="btn btn-info"})
+    @Html.ActionLink("Home", "Index", "Home", null, new {@class="btn btn-success"})</p>
+  </div>
+</div>
