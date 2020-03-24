@@ -1,19 +1,21 @@
 @{
   Layout = "_Layout";
 }
-<h1>Create</h1>
-@* @model RecipeBookdelelRecipeBook.ModTagsItem
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="text-center">Add A New Tag</h1>
+    @model RecipeBook.Models.Tag;
 
-<h4>Add a new task</h4>
+    @using (Html.BeginForm())
+    {
+      <div class="form-group">
+        @Html.LabelFor(model => model.Name )
+        @Html.TextBoxFor(model => model.Name, new { @class="form-control"})
+      </div>
 
-@using (Html.BeginForm())
-{
-    
-    @Html.TextBoxFor(model => model.Name)
 
-    @Html.Label("Select ????")
-    @Html.DropDownList("CategoryId")
-
-    <input type="submit" value="Add new item" class="btn btn-default" />
-}
-<p>@Html.ActionLink("Show all items", "Index")</p> *@
+        <input type="submit" value="Add new tag" class="btn btn-info btn-block" />
+    }
+    <p>@Html.ActionLink("Show all tags", "Index")</p> 
+  </div>
+</div>
