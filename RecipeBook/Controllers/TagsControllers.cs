@@ -23,7 +23,6 @@ namespace RecipeBook.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.CourseId = new SelectList(_db.Recipes, "RecipeId", "Name");
       return View();
     }
 
@@ -96,6 +95,15 @@ namespace RecipeBook.Controllers
     {
       var thisTag = _db.Tags.FirstOrDefault(tags => tags.TagId == id);
       _db.Tags.Remove(thisTag);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteRecipes(int joinId)
+    {
+      var joinEntry = _db.RecipeTag.FirstOrDefault(entry => entry.RecipeTagId == joinId);
+      _db.RecipeTag.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

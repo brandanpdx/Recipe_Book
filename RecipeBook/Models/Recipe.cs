@@ -8,7 +8,6 @@ namespace RecipeBook.Models
     {
       this.Tags = new HashSet<RecipeTag>();
     }
-
     public int RecipeId { get; set; }
     public string Name { get; set; }
     public int Rating { get; set; }

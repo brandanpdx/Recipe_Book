@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using RecipeBook.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,7 +8,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
-using RecipeBook.Models;
 
 
 namespace RecipeBook.Controllers
@@ -65,13 +65,18 @@ namespace RecipeBook.Controllers
 
     public ActionResult Edit(int id)
     {
+      ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Name");
       var thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
       return View(thisRecipe);
     }
 
     [HttpPost]
-    public ActionResult Edit(Recipe recipe)
+    public ActionResult Edit(Recipe recipe, int TagId)
     {
+      if (TagId != 0)
+      {
+        _db.RecipeTag.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId });
+      }
       _db.Entry(recipe).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -88,6 +93,15 @@ namespace RecipeBook.Controllers
     {
       var thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
       _db.Recipes.Remove(thisRecipe);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteTags(int joinId)
+    {
+      var joinEntry = _db.RecipeTag.FirstOrDefault(entry => entry.RecipeTagId == joinId);
+      _db.RecipeTag.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

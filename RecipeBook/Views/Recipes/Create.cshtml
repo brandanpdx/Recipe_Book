@@ -23,7 +23,7 @@
       </div>
       <div class="form-group">
         @Html.LabelFor(model => model.Rating)
-        @Html.TextAreaFor(model => model.Rating, new { @class="form-control", placeholder = "How good is it?", @type = "number"})
+        @Html.TextBoxFor(model => model.Rating, new { @class="form-control", placeholder = "How good is it?", @type = "number"})
       </div>
       <div class="form-group">
         @Html.Label("Select Tag")

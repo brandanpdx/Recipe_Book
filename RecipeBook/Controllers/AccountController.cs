@@ -6,6 +6,7 @@ using RecipeBook.ViewModels;
 
 namespace RecipeBook.Controllers
 {
+
   public class AccountController : Controller
   {
     private readonly RecipeBookContext _db;
